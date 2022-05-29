@@ -13,12 +13,11 @@ BST<std::string> makeTree(const char* filename) {
         return tree;
     }
     std::string cache = "";
-    while (!file.eof())
-    {
+    while (!file.eof()) {
         int ch = file.get();
-        if (ch >= 'a' && ch <= 'z') {
+        if ((char)ch >= 'a' && (char)ch <= 'z') {
             cache += char(ch);
-        } else if (ch >= 'A' && ch <= 'Z') {
+        } else if ((char)ch >= 'A' && (char)ch <= 'Z') {
             cache += char(ch + ('a' - 'A'));
         } else {
             if (cache != "") {
