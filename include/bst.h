@@ -3,11 +3,9 @@
 #define INCLUDE_BST_H_
 
 template <typename T>
-class BST
-{
+class BST {
  public:
-    struct Node
-    {
+    struct Node {
         T value;
         int count;
         Node* left;
@@ -25,18 +23,11 @@ class BST
             root->left = addNode(root->left, value);
         } else if (root->value.compare(value) < 0) {
             root->right = addNode(root->right, value);
-        } else
+        } else {
             root->count++;
+        }
         return root;
-    };
-    void printTree(Node* root) {
-        if (root == nullptr)
-            return;
-        printTree(root->left);
-        for (int i = 0; i < root->count; i++)
-            std::cout << root->value << "␣";
-        printTree(root->right);
-    };
+    }
     int depthTree(Node* root) {
         if (root == nullptr) {
             return 0;
@@ -45,35 +36,32 @@ class BST
             int r = depthTree(root->right);
             return 1 + (l >= r ? l : r);
         }
-    };
+    }
     int searchNode(Node* root, T value) {
         int check = root->value.compare(value);
         if (check == 0) {
             return root->count;
-        }
-        else if (check > 0) {
+        } else if (check > 0) {
             if (root->left != nullptr) {
                 return searchNode(root->left, value);
             }
             return 0;
-        }
-        else {
+        } else {
             if (root->right != nullptr) {
                 return searchNode(root->right, value);
             }
             return 0;
         }
-    };
+    }
     void delTree(Node* root) {
         if (root == nullptr)
             return;
-        else
-        {
+        else {
             delTree(root->left);
             delTree(root->right);
             delete root;
         }
-    };
+    }
     Node* delNode(Node* root, T value) {
         Node* p, * v;
         if (root == nullptr)
@@ -109,35 +97,31 @@ class BST
             delete p;
         }
         return root;
-    };
+    }
  public:
     BST() : root(nullptr) {};
     void add(T value) {
         root = addNode(root, value);
-    };
-    void print() {
-        printTree(root);
-    };
+    }
     int depth() {
         if (root) {
             return depthTree(root) - 1;
         }
         return 0;
-    };
+    }
     int search(T value) {
         return searchNode(root, value);
-    };
+    }
     void clear() {
-        if (root)
-        {
+        if (root) {
             delTree(root);
             root = nullptr;
         }
-    };
+    }
     void remove(T value) {
         if (root)
             root = delNode(root, value);
-    };
-};
+    }
+}
 
 #endif  // INCLUDE_BST_H_
