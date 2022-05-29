@@ -6,8 +6,8 @@
 #include  "bst.h"
 
 BST<std::string> makeTree(const char* filename) {
-    std::ifstream file(filename);
     BST<std::string> tree;
+    std::ifstream file(filename);
     if (!file) {
         std::cout << "File error!" << std::endl;
         return tree;
@@ -15,10 +15,10 @@ BST<std::string> makeTree(const char* filename) {
     std::string cache = "";
     while (!file.eof()) {
         int ch = file.get();
-        if ((char)ch >= 'a' && (char)ch <= 'z') {
+        if (static_cast<char>(ch) >= 'a' && static_cast<char>(ch) <= 'z') {
             cache += char(ch);
-        } else if ((char)ch >= 'A' && (char)ch <= 'Z') {
-            cache += char(ch + ('a' - 'A'));
+        } else if (static_cast<char>(ch) >= 'A' && static_cast<char>(ch) <= 'Z') {
+            cache += static_cast<char>(ch + ('a' - 'A'));
         } else {
             if (cache != "") {
                 tree.add(cache);
