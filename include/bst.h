@@ -10,7 +10,8 @@ class BST {
         int count;
         Node* left;
         Node* right;
-    };
+    }
+ 
  private:
     Node* root;
     Node* addNode(Node* root, T value) {
@@ -54,9 +55,9 @@ class BST {
         }
     }
     void delTree(Node* root) {
-        if (root == nullptr)
+        if (root == nullptr) {
             return;
-        else {
+        } else {
             delTree(root->left);
             delTree(root->right);
             delete root;
@@ -64,21 +65,19 @@ class BST {
     }
     Node* delNode(Node* root, T value) {
         Node* p, * v;
-        if (root == nullptr)
+        if (root == nullptr) {
             return root;
-        else if (root->value.compare(value) > 0)
+        } else if (root->value.compare(value) > 0) {
             root->left = delNode(root->left, value);
-        else if (root->value.compare(value) < 0)
+        } else if (root->value.compare(value) < 0) {
             root->right = delNode(root->right, value);
-        else
-        {
+        } else {
             p = root;
-            if (root->right == nullptr)
+            if (root->right == nullptr) {
                 root = root->left;
-            else if (root->left == nullptr)
+            } else if (root->left == nullptr) {
                 root = root->right;
-            else
-            {
+            } else {
                 v = root->left;
                 if (v->right) {
                     while (v->right->right)
@@ -98,8 +97,9 @@ class BST {
         }
         return root;
     }
+ 
  public:
-    BST() : root(nullptr) {};
+    BST() : root(nullptr) {}
     void add(T value) {
         root = addNode(root, value);
     }
