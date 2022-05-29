@@ -16,7 +16,7 @@ BST<std::string> makeTree(const char* filename) {
     while (!file.eof()) {
         int ch = file.get();
         if (static_cast<char>(ch) >= 'a' && static_cast<char>(ch) <= 'z') {
-            cache += char(ch);
+            cache += static_cast<char>(ch);
         } else if (static_cast<char>(ch) >= 'A' && static_cast<char>(ch) <= 'Z') {
             cache += static_cast<char>(ch + ('a' - 'A'));
         } else {
