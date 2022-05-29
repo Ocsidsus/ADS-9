@@ -10,8 +10,8 @@ class BST {
         int count;
         Node* left;
         Node* right;
-    }
- 
+    };
+
  private:
     Node* root;
     Node* addNode(Node* root, T value) {
@@ -97,7 +97,7 @@ class BST {
         }
         return root;
     }
- 
+
  public:
     BST() : root(nullptr) {}
     void add(T value) {
@@ -122,6 +122,6 @@ class BST {
         if (root)
             root = delNode(root, value);
     }
-}
+};
 
 #endif  // INCLUDE_BST_H_
